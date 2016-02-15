@@ -6,6 +6,7 @@
     <string name="label_correct_answer">Correct!</string>
     <string name="label_incorrect_answer">Incorrect!</string>
     <string name="button_next">Next</string>
+    <string name="button_previous">Previous</string>
 
     <string name="question_oceans">The Pacific Ocean is larger than the Atlantic Ocean.</string>
     <string name="question_mideast">The Suez Canal connects the Red Sea and the Indian Ocean.</string>
