@@ -70,7 +70,10 @@ public class MainActivity extends AppCompatActivity {
         int messageResId = 0;
 
         if(userAnswer == answerIsTrue){
-            messageResId = R.string.label_correct_answer
+            messageResId = R.string.label_correct_answer;
+        }else{
+            messageResId = R.string.label_incorrect_answer;
         }
+        Snackbar.make(coordinatorLayout, messageResId, Snackbar.LENGTH_LONG).show();
     }
 }
