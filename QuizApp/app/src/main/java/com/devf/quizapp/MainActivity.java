@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.devf.quizapp.model.TrueFalse;
@@ -26,9 +27,9 @@ public class MainActivity extends AppCompatActivity {
     @Bind(R.id.toolbar)
     Toolbar toolbar;
     @Bind(R.id.button_previous)
-    Button buttonPrevious;
+    ImageButton buttonPrevious;
     @Bind(R.id.button_next)
-    Button buttonNext;
+    ImageButton buttonNext;
 
     private TrueFalse[] questionBank = new TrueFalse[]{
             new TrueFalse(R.string.question_oceans, true),
