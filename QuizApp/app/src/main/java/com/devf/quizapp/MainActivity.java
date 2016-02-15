@@ -5,6 +5,7 @@ import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -46,7 +47,8 @@ public class MainActivity extends AppCompatActivity {
 
     @OnClick({R.id.button_next, R.id.label_question})
     public void showNextQuestion(){
-        currentIndex = currentIndex++;
+        currentIndex = currentIndex+1;
+        Log.i(TAG, "Current index " + currentIndex);
         updateQuestion();
     }
 
