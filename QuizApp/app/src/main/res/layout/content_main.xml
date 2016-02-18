@@ -36,7 +36,7 @@
             android:layout_margin="@dimen/padding_xsmall"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:background="@color/colorAccent"
+            android:background="@drawable/background_button_selector"
             android:scaleType="centerInside"
             android:src="@drawable/ic_chevron_left_white_48dp"/>
 
@@ -45,7 +45,7 @@
             android:layout_margin="@dimen/padding_xsmall"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:background="@color/colorAccent"
+            android:background="@drawable/background_button_selector"
             android:scaleType="centerInside"
             android:src="@drawable/ic_chevron_right_white_48dp"/>
     </LinearLayout>
