@@ -15,6 +15,11 @@ import android.widget.Toast;
 
 import com.devf.quizapp.R;
 import com.devf.quizapp.model.TrueFalse;
+import com.devf.quizapp.model.TrueFalseCollection;
+import com.devf.quizapp.utils.Constants;
+import com.devf.quizapp.utils.QuizGenerator;
+
+import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -33,13 +38,8 @@ public class QuizFragment extends Fragment {
     @Bind(R.id.button_next)
     ImageButton buttonNext;
 
-    private TrueFalse[] questionBank = new TrueFalse[]{
-            new TrueFalse(R.string.question_oceans, true),
-            new TrueFalse(R.string.question_mideast, false),
-            new TrueFalse(R.string.question_africa, false),
-            new TrueFalse(R.string.question_americas, true),
-            new TrueFalse(R.string.question_asia, true),
-    };
+    private TrueFalseCollection trueFalseCollection;
+    private List<TrueFalse> questionBank;
     private int currentIndex = 0;
 
 
@@ -54,14 +54,28 @@ public class QuizFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        validatePosition();
+        new Thread(){
+            @Override
+            public void run() {
+                trueFalseCollection = QuizGenerator.getTrueFalseCollection(getActivity(),
+                        Constants.QUESTION_JSON_NAME_FILE);
+
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        questionBank = trueFalseCollection.questions;
+                        validatePosition();
+                    }
+                });
+            }
+        }.start();
     }
 
     private void validatePosition(){
         Log.i(TAG, "Current index " + currentIndex);
         if (currentIndex == 0) {
             buttonPrevious.setEnabled(false);
-        } else if(currentIndex == questionBank.length-1){
+        } else if(currentIndex == questionBank.size()-1){
             buttonNext.setEnabled(false);
         } else {
             buttonNext.setEnabled(true);
@@ -71,13 +85,13 @@ public class QuizFragment extends Fragment {
     }
 
     private void updateQuestion() {
-        int question = questionBank[currentIndex].getQuestion();
-        Log.d(TAG, "String " + getString(question));
+        String question = questionBank.get(currentIndex).question;
+        Log.d(TAG, "String " + question);
         labelQuestion.setText(question);
     }
 
     private void checkAnswer(boolean userAnswer) {
-        boolean answerIsTrue = questionBank[currentIndex].isTrueQuestion();
+        boolean answerIsTrue = questionBank.get(currentIndex).trueQuestion;
         int messageResId = 0;
 
         if (userAnswer == answerIsTrue) {
