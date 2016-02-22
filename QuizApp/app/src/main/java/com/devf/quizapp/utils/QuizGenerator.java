@@ -8,8 +8,6 @@ import com.google.gson.Gson;
 
 import org.json.JSONObject;
 
-import java.util.List;
-
 /**
  * Created by Condesa on 19/02/16.
  */
