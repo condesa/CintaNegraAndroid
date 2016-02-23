@@ -1,31 +1,47 @@
 package com.devf.quizapp.activities;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 
 import com.devf.quizapp.R;
+import com.devf.quizapp.adapter.QuestionAdapter;
+import com.devf.quizapp.fragments.QuizListFragment;
+import com.devf.quizapp.model.TrueFalse;
 
-public class ListQuestionActivity extends AppCompatActivity {
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
+public class ListQuestionActivity extends AppCompatActivity implements QuestionAdapter.OnItemClickListener {
+
+    @Bind(R.id.coordinator_layout)
+    CoordinatorLayout coordinatorLayout;
+    @Bind(R.id.toolbar)
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_question);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        ButterKnife.bind(this);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        Fragment fragment = fragmentManager.findFragmentById(R.id.container_fragment);
+        if(fragment == null){
+            fragment = new QuizListFragment();
+            fragmentManager.beginTransaction()
+                    .add(R.id.container_fragment, fragment)
+                    .commit();
+        }
     }
 
+    @Override
+    public void onClick(TrueFalse trueFalseSelected) {
+        Snackbar.make(coordinatorLayout, trueFalseSelected.question, Snackbar.LENGTH_SHORT).show();
+    }
 }
