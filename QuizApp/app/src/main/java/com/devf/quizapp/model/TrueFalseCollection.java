@@ -1,5 +1,7 @@
 package com.devf.quizapp.model;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
 /**
@@ -7,5 +9,6 @@ import java.util.List;
  */
 public class TrueFalseCollection {
 
+    @SerializedName("questions")
     public List<TrueFalse> questions;
 }
