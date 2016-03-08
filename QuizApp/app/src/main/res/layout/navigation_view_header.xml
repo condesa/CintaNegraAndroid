@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/padding_large"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+    <ImageView
+        android:id="@+id/avatar"
+        android:layout_width="@dimen/image_button_quiz_size"
+        android:layout_height="@dimen/image_button_quiz_size"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="@dimen/margin_large"
+        android:src="@mipmap/ic_launcher"/>
+    <TextView
+        android:id="@+id/label_username"
+        style="@style/LabelBase.Medium.Black"
+        android:text="Nombre:"
+        android:layout_alignParentBottom="true"/>
+
+    <TextView
+        android:id="@+id/label_email"
+        style="@style/LabelBase"
+        android:layout_toRightOf="@id/label_username"
+        android:layout_alignBottom="@id/label_username"
+        android:layout_marginLeft="@dimen/margin_large"
+        android:text="Aurora"/>
+
+
+
+</RelativeLayout>

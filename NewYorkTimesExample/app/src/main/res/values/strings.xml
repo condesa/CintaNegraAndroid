@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">NewYorkTimesExample</string>
+
+    <string name="navigation_home">Home</string>
+    <string name="label_username">Aurora Rodríguez</string>
+    <string name="label_email">condesa_sama</string>
+    <string name="button_share">SHARE</string>
+    <string name="button_view_more">VIEW MORE</string>
+    <string name="nyt_api_key">d51d20b266b99b47ade6eb2742ba98d4:19:74506208</string>
+    <string name="dialog_wait">Por favor espere...</string>
+    <string name="dialog_download_books">Descargando libros</string>
+    <string name="button_ok">ACEPTAR</string>
+    <string name="toolbar_books">Books</string>
+</resources>
