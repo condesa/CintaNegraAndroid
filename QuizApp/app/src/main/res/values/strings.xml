@@ -17,4 +17,7 @@
     <string name="action_list">Go to list</string>
 
     <string name="label_answer">Correct answer: %1$s</string>
+
+    <string name="navigation_home">Home</string>
+    <string name="navigation_list">Quiz List</string>
 </resources>
