@@ -12,6 +12,9 @@ public class BooksActivity extends NavigationViewActivity {
 
     @Override
     protected Fragment createFragment() {
-        return new BooksFragment();
+        /**
+         * How to pass data from Activity to Fragment
+         */
+        return BooksFragment.getInstance("http://google.com");
     }
 }

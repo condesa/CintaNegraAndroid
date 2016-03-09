@@ -4,10 +4,10 @@
         android:checkableBehavior="single">
 
         <item
-            android:id="@+id/navigation_home"
+            android:id="@+id/navigation_books"
             android:checked="true"
             android:icon="@drawable/ic_home_white_24dp"
-            android:title="@string/navigation_home"/>
+            android:title="@string/navigation_books"/>
     </group>
 
 </menu>
