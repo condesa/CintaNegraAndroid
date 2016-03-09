@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">NewYorkTimesExample</string>
 
-    <string name="navigation_home">Home</string>
+    <string name="navigation_books">Books</string>
     <string name="label_username">Aurora Rodríguez</string>
     <string name="label_email">condesa_sama</string>
     <string name="button_share">SHARE</string>
