@@ -10,7 +10,8 @@ public class APIRest {
 
     // GET Methods Urls
     public static String getBooksList(String date, String apiKey){
-        return String.format("%s%s", BASE_URL,
+        return String.format("%s%s",
+                BASE_URL,
                 "svc/books/v2/lists/" + date + "/trade-fiction-paperback.json?api-key=" + apiKey);
     }
 }

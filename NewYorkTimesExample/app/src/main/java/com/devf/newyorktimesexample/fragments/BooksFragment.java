@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import com.devf.newyorktimesexample.R;
 import com.devf.newyorktimesexample.adapters.BooksAdapter;
 import com.devf.newyorktimesexample.core.MainFragment;
+import com.devf.newyorktimesexample.utils.ConnectionUtils;
 import com.devf.newyorktimesexample.utils.Utility;
 import com.devf.newyorktimesexample.utils.asynctask.ProcessBookList;
 import com.devf.newyorktimesexample.volley.APIRest;
@@ -33,7 +34,28 @@ public class BooksFragment extends MainFragment implements
 
     @Bind(R.id.recycler_view)
     RecyclerView recyclerView;
-    private ProcessBookList processBookList;
+
+    /**
+     * Passing Data to Fragment Example
+     */
+    public static BooksFragment getInstance(String url){
+        Bundle bundle = new Bundle();
+        bundle.putString("KEY_URL", url);
+        BooksFragment booksFragment = new BooksFragment();
+        booksFragment.setArguments(bundle);
+        return booksFragment;
+    }
+
+    /**
+     * Retrieve data from Fragment Arguments Example
+     */
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if(getArguments() != null){
+            showLogMessage(getArguments().getString("KEY_URL"));
+        }
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -45,13 +67,15 @@ public class BooksFragment extends MainFragment implements
     @Override
     public void onStart() {
         super.onStart();
-        if(!isInfoLoaded){
+        if(!isInfoLoaded && ConnectionUtils.isNetworkAvailable(getActivity())){
             showMaterialProgress(R.string.dialog_download_books);
             volleyManager.setOnRequestListener(this);
             volleyManager.executeGetRequest(
                     APIRest.getBooksList(
                         Utility.getDateForBooksRequest(),
                         getString(R.string.nyt_api_key)));
+        }else{
+
         }
     }
 
@@ -60,14 +84,12 @@ public class BooksFragment extends MainFragment implements
      */
     @Override
     public void onRequestSuccess(JSONArray responseArray) {
-        dismissDialog();
-        showMaterialDialog(responseArray.toString());
+
     }
 
     @Override
     public void onRequestSuccess(JSONObject responseObject) {
-        processBookList = new ProcessBookList(responseObject, this);
-        processBookList.execute();
+        new ProcessBookList(responseObject, this).execute();
     }
 
     @Override
@@ -75,6 +97,10 @@ public class BooksFragment extends MainFragment implements
         dismissDialog();
         showMaterialDialog(error.getMessage());
     }
+
+    /**
+     * ProcessBookList.ProcessBookCallback
+     */
 
     @Override
     public void processFinish(List<Book> books) {
