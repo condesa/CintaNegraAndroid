@@ -1,5 +1,6 @@
 package com.devf.newyorktimesexample.core;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.NavigationView;
@@ -14,6 +15,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import com.devf.newyorktimesexample.R;
+import com.devf.newyorktimesexample.screens.LoginActivity;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -73,7 +75,11 @@ public abstract class NavigationViewActivity extends AppCompatActivity {
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {
-                Snackbar.make(coordinatorLayout, String.format("%s pressed", menuItem.getTitle()), Snackbar.LENGTH_LONG).show();
+                switch (menuItem.getItemId()){
+                    case R.id.navigation_login:
+                        startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                        break;
+                }
                 menuItem.setChecked(true);
                 drawerLayout.closeDrawers();
                 return true;

@@ -8,6 +8,11 @@
             android:checked="true"
             android:icon="@drawable/ic_home_white_24dp"
             android:title="@string/navigation_books"/>
+        <item
+            android:id="@+id/navigation_login"
+            android:checked="true"
+            android:icon="@drawable/ic_home_white_24dp"
+            android:title="@string/navigation_login"/>
     </group>
 
 </menu>
