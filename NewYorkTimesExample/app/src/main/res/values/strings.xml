@@ -2,6 +2,7 @@
     <string name="app_name">NewYorkTimesExample</string>
 
     <string name="navigation_books">Books</string>
+    <string name="navigation_login">Login</string>
     <string name="label_username">Aurora Rodríguez</string>
     <string name="label_email">condesa_sama</string>
     <string name="button_share">SHARE</string>
@@ -11,4 +12,6 @@
     <string name="dialog_download_books">Descargando libros</string>
     <string name="button_ok">ACEPTAR</string>
     <string name="toolbar_books">Books</string>
+
+    <string name="facebook_app_id">1718971421671043</string>
 </resources>
